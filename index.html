@@ -28,10 +28,11 @@
             cursor: url('https://cdn-icons-png.flaticon.com/32/1443/1443011.png'), auto !important;
         }
 
-        body {
+        html, body {
             font-family: 'Quicksand', sans-serif;
             background-color: #f0f2f5;
             overflow-x: hidden;
+            width: 100%;
         }
         body.locked { overflow: hidden; }
 
@@ -42,15 +43,39 @@
 
         /* ----- RESPONSIVIDAD OPTIMIZADA ----- */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.8rem !important; }
+            .hero-title { font-size: 2.2rem !important; }
             .bg-ladybug { padding: 40px 0 60px !important; }
             .card-info { padding: 25px 15px; margin-top: 50px; }
-            .carousel-item img { height: 350px !important; }
+            .carousel-item img { height: 300px !important; }
             .floating-timer { 
                 bottom: 10px !important; right: 10px !important; scale: 0.8; 
                 transform-origin: bottom right;
             }
-            .hero-img { width: 200px !important; height: 200px !important; }
+            .hero-img { width: 180px !important; height: 180px !important; }
+            
+            /* Fix parallax on mobile */
+            .parallax-section, .details-section {
+                background-attachment: scroll !important;
+                background-position: center center !important;
+            }
+            
+            .parallax-section {
+                min-height: 300px !important;
+            }
+
+            .details-section {
+                padding: 40px 0 !important;
+            }
+
+            .hero-title br {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 1.8rem !important; }
+            .fs-5 { font-size: 1rem !important; }
+            .btn-enter { font-size: 1.5rem !important; padding: 12px 30px !important; }
         }
 
         /* ----- PANTALLAS DE CARGA Y BIENVENIDA ----- */
@@ -183,7 +208,8 @@
         .carousel-item img {
             border-radius: 20px;
             height: 500px;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #111;
         }
         .carousel-control-prev-icon, .carousel-control-next-icon {
             background-color: var(--ladybug-red);
